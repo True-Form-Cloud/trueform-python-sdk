@@ -66,7 +66,18 @@ class TrueformTest(unittest.TestCase):
 
         validation = trueform.validations.create(email="User@Example.com")
 
-        self.assertEqual(validation, Validation(**VALIDATION))
+        self.assertEqual(
+            validation,
+            Validation(
+                email="user@example.com",
+                is_valid_format=True,
+                is_freemail=False,
+                is_disposable=False,
+                has_mx_records=True,
+                did_you_mean=None,
+                is_deliverable=True,
+            ),
+        )
         self.assertTrue(validation.is_deliverable)
         with self.assertRaises(FrozenInstanceError):
             validation.email = "changed@example.com"  # type: ignore[misc]
@@ -267,13 +278,13 @@ class TrueformTest(unittest.TestCase):
             with self.subTest(options=options), self.assertRaises(
                 (TypeError, ValueError)
             ):
-                Trueform(**options)  # type: ignore[arg-type]
+                Trueform(**options)
 
         trueform = Trueform(transport=StubTransport(response(VALIDATION)))
         with self.assertRaises(ValueError):
             trueform.validations.create(
                 email="user@example.com",
-                timeout=False,  # type: ignore[arg-type]
+                timeout=False,
             )
 
 

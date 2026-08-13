@@ -105,35 +105,35 @@ class Trueform:
                     raise
                 time.sleep(_retry_delay(error, attempt))
             except builtins.TimeoutError as error:
-                mapped_error = TrueformTimeoutError(
+                timeout_error = TrueformTimeoutError(
                     f"Request timed out after {request_timeout:g} seconds.",
                     code="request_timeout",
                 )
                 if attempt >= retries:
-                    raise mapped_error from error
-                time.sleep(_retry_delay(mapped_error, attempt))
+                    raise timeout_error from error
+                time.sleep(_retry_delay(timeout_error, attempt))
             except URLError as error:
                 if isinstance(error.reason, builtins.TimeoutError):
-                    mapped_error = TrueformTimeoutError(
+                    url_error: TrueformError = TrueformTimeoutError(
                         f"Request timed out after {request_timeout:g} seconds.",
                         code="request_timeout",
                     )
                 else:
-                    mapped_error = ConnectionError(
+                    url_error = ConnectionError(
                         "Unable to connect to the Trueform API.",
                         code="connection_error",
                     )
                 if attempt >= retries:
-                    raise mapped_error from error
-                time.sleep(_retry_delay(mapped_error, attempt))
+                    raise url_error from error
+                time.sleep(_retry_delay(url_error, attempt))
             except (HTTPException, OSError) as error:
-                mapped_error = ConnectionError(
+                connection_error = ConnectionError(
                     "Unable to connect to the Trueform API.",
                     code="connection_error",
                 )
                 if attempt >= retries:
-                    raise mapped_error from error
-                time.sleep(_retry_delay(mapped_error, attempt))
+                    raise connection_error from error
+                time.sleep(_retry_delay(connection_error, attempt))
 
         raise AssertionError("unreachable")
 
@@ -229,8 +229,8 @@ def _retryable(error: TrueformError) -> bool:
 
 def _retry_delay(error: TrueformError, attempt: int) -> float:
     if error.retry_after is not None:
-        return min(error.retry_after, MAX_RETRY_DELAY)
-    return min(0.25 * (2**attempt), 2.0)
+        return min(float(error.retry_after), MAX_RETRY_DELAY)
+    return min(0.25 * (2.0**attempt), 2.0)
 
 
 def _normalize_base_url(value: str) -> str:
