@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "trueform-cloud"
+dynamic = ["version"]
+description = "Official Python SDK for the Trueform email validation API"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Trueform" }]
+keywords = ["email", "email-validation", "python", "trueform"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.3",
+  "mypy>=1.18",
+  "pytest>=8.4",
+  "ruff>=0.14",
+  "twine>=6.2",
+]
+
+[project.urls]
+Homepage = "https://trueform.cloud/docs/python/"
+Documentation = "https://trueform.cloud/docs/python/"
+Changelog = "https://github.com/True-Form-Cloud/trueform-python-sdk/blob/main/CHANGELOG.md"
+Issues = "https://github.com/True-Form-Cloud/trueform-python-sdk/issues"
+Repository = "https://github.com/True-Form-Cloud/trueform-python-sdk"
+
+[tool.hatch.version]
+path = "src/trueform_cloud/_version.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/CHANGELOG.md",
+  "/LICENSE",
+  "/README.md",
+  "/pyproject.toml",
+  "/src",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trueform_cloud"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src", "tests", "scripts"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "RUF", "SIM", "UP"]
