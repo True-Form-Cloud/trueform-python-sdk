@@ -38,9 +38,11 @@ dev = [
 [project.urls]
 Homepage = "https://trueform.cloud/docs/python/"
 Documentation = "https://trueform.cloud/docs/python/"
+"API Reference" = "https://trueform.cloud/docs/api-reference/"
 Changelog = "https://github.com/True-Form-Cloud/trueform-python-sdk/blob/main/CHANGELOG.md"
 Issues = "https://github.com/True-Form-Cloud/trueform-python-sdk/issues"
 Repository = "https://github.com/True-Form-Cloud/trueform-python-sdk"
+Security = "https://github.com/True-Form-Cloud/trueform-python-sdk/blob/main/SECURITY.md"
 
 [tool.hatch.version]
 path = "src/trueform_cloud/_version.py"

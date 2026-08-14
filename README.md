@@ -1,8 +1,22 @@
 # Trueform Python SDK
 
-The official Python client for the [Trueform email validation API](https://trueform.cloud/docs/).
+[![PyPI version][pypi-version-badge]][pypi-package]
+[![CI][ci-badge]][ci]
+[![Python versions][python-badge]][pypi-package]
+[![MIT License][license-badge]][license]
 
-[Python SDK documentation](https://trueform.cloud/docs/python/) | [API reference](https://trueform.cloud/docs/api-reference/)
+The official Python client for the [Trueform email validation API](https://trueform.cloud/docs/).
+Validate email format, disposable and freemail providers, common domain typos, and mail routing
+without an API key.
+
+[Documentation](https://trueform.cloud/docs/python/) | [API reference](https://trueform.cloud/docs/api-reference/) | [PyPI][pypi-package] | [Changelog](https://github.com/True-Form-Cloud/trueform-python-sdk/blob/main/CHANGELOG.md) | [Issues](https://github.com/True-Form-Cloud/trueform-python-sdk/issues)
+
+## Features
+
+- Frozen, slotted result dataclasses with complete type annotations
+- Zero runtime dependencies
+- Built-in retries for connection failures, timeouts, rate limits, and server errors
+- Client-level and per-request configuration
 
 ## Install
 
@@ -110,9 +124,26 @@ python -m twine check dist/*
 python scripts/check_package.py dist/*
 ```
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Report vulnerabilities
-through the process in [SECURITY.md](SECURITY.md).
+Read the [contributing guide](https://github.com/True-Form-Cloud/trueform-python-sdk/blob/main/CONTRIBUTING.md)
+before opening a pull request. Report vulnerabilities through the process in the
+[security policy](https://github.com/True-Form-Cloud/trueform-python-sdk/blob/main/SECURITY.md).
+
+## Trueform SDKs
+
+| Platform | Registry | Source |
+| --- | --- | --- |
+| Node.js | [`trueform-node` on npm](https://www.npmjs.com/package/trueform-node) | [GitHub](https://github.com/True-Form-Cloud/trueform-node-sdk) |
+| Ruby | [`trueform` on RubyGems](https://rubygems.org/gems/trueform) | [GitHub](https://github.com/True-Form-Cloud/trueform-ruby-sdk) |
+| Python | [`trueform-cloud` on PyPI][pypi-package] | [GitHub](https://github.com/True-Form-Cloud/trueform-python-sdk) |
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See the [license][license].
+
+[pypi-package]: https://pypi.org/project/trueform-cloud/
+[pypi-version-badge]: https://img.shields.io/pypi/v/trueform-cloud?logo=pypi&logoColor=white
+[ci]: https://github.com/True-Form-Cloud/trueform-python-sdk/actions/workflows/ci.yml
+[ci-badge]: https://github.com/True-Form-Cloud/trueform-python-sdk/actions/workflows/ci.yml/badge.svg
+[python-badge]: https://img.shields.io/pypi/pyversions/trueform-cloud?logo=python&logoColor=white
+[license]: https://github.com/True-Form-Cloud/trueform-python-sdk/blob/main/LICENSE
+[license-badge]: https://img.shields.io/github/license/True-Form-Cloud/trueform-python-sdk
