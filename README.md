@@ -133,6 +133,7 @@ before opening a pull request. Report vulnerabilities through the process in the
 | Platform | Registry | Source |
 | --- | --- | --- |
 | Node.js | [`trueform-node` on npm](https://www.npmjs.com/package/trueform-node) | [GitHub](https://github.com/True-Form-Cloud/trueform-node-sdk) |
+| PHP | [`trueform/trueform` on Packagist](https://packagist.org/packages/trueform/trueform) | [GitHub](https://github.com/True-Form-Cloud/trueform-php-sdk) |
 | Ruby | [`trueform` on RubyGems](https://rubygems.org/gems/trueform) | [GitHub](https://github.com/True-Form-Cloud/trueform-ruby-sdk) |
 | Python | [`trueform-cloud` on PyPI][pypi-package] | [GitHub](https://github.com/True-Form-Cloud/trueform-python-sdk) |
 
